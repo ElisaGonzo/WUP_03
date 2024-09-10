@@ -43,6 +43,10 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 favstats(alcohol~Seat,data=davisdata)
 ```
 
+
+The front row and back row are about the same size while the middle is the largest section. Someone in the back row has 55 drinks, front has 20, and middle had 35.The average for drinks per person is 9 in the row and only 1 or 3 in the fornt and middle.   
+
+
 ## Inferential Tests
 
 ## Conclusions
