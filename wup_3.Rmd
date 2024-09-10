@@ -19,9 +19,6 @@ davisdata <- read.csv(file="UCDavis.csv")
 
 ## Now with ggplot - first select the basic data
 
-```{r}
-basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
-```
 ## Now add in boxplot
 
 ```{r}
@@ -31,11 +28,6 @@ boxplot(alcohol~Seat,data=davisdata)
 
 The box in the back had a higher median than th =e front and middle boxes. There are more outliers in the middle box than any other. 
   
-### get fancy  
-
-```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
-```
 
 ## Numerical Summarys
 
@@ -44,10 +36,28 @@ favstats(alcohol~Seat,data=davisdata)
 ```
 
 
-The front row and back row are about the same size while the middle is the largest section. Someone in the back row has 55 drinks, front has 20, and middle had 35.The average for drinks per person is 9 in the row and only 1 or 3 in the fornt and middle.   
+The front row and back row are about the same size while the middle is the largest section. Someone in the back row has 55 drinks, front has 20, and middle had 35.The average for drinks per person is 9 in the row and only 1 or 3 in the front and middle.   
 
 
 ## Inferential Tests
+
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+
+The probability of getting these results are 1 out of 1,000. The seats are different from one another making the profit different. The difference is nessscary. 
+
+
+```{r}
+par(mar = c(3, 8.7, 2, 2))
+plot(TukeyHSD(model1),las=2)
+```
+
+
+After subtracting the back from the middle you still get a negative number. The back and middle are different. The back and front are different. But the front and the middle are not different because they do not meet 0. 
+
 
 ## Conclusions
 
