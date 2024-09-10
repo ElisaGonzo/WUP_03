@@ -25,9 +25,11 @@ basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ## Now add in boxplot
 
 ```{r}
-basicCN + geom_boxplot()
+boxplot(alcohol~Seat,data=davisdata)
 ```
-  
+
+
+The box in the back had a higher median than th =e front and middle boxes. There are more outliers in the middle box than any other. 
   
 ### get fancy  
 
